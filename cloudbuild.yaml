@@ -1,0 +1,15 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      - "-t"
+      - "us-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-practice/practice-job:$COMMIT_SHA"
+      - "."
+
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "push"
+      - "us-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-practice/practice-job:$COMMIT_SHA"
+
+images:
+  - "us-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-practice/practice-job:$COMMIT_SHA"
